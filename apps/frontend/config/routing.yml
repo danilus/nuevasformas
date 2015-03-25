@@ -1,0 +1,50 @@
+homepage:
+  url:   /
+  param: { module: home, action: index }
+
+
+muebles:
+  url:   /muebles
+  param: { module: muebles, action: index }
+
+category:
+  url:   /muebles/:slug
+  class: sfDoctrineRoute
+  options: { model: Category, type: object }
+  params: { module: muebles, action: category }
+
+model:
+  url:   /muebles/detalle/:slug
+  class: sfDoctrineRoute
+  options: { model: Model, type: object }
+  params: { module: muebles, action: model }
+
+model_details:
+  url:   /muebles/ampliar-detalle/:slug
+#  class: sfDoctrineRoute
+#  options: { model: Model, type: object }
+  param: { module: muebles, action: details }
+
+
+que_hacemos:
+  url:   /que-hacemos
+  param: { module: que_hacemos, action: index }
+
+
+contacto:
+  url:   /contacto
+  param: { module: contacto, action: index }
+
+enviar_mensaje_form_contacto:
+  url:   /contacto/enviar-mensaje
+  param: { module: contacto, action: enviarMensaje }
+
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+#sf_admin_container input.large-style,
+#sf_admin_container select.large-style,
+#sf_admin_container textarea.large-style {
+  width: 590px;
+}
+
+#sf_admin_container input.short-style {
+  width: 50px;
+}

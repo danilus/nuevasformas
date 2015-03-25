@@ -1,0 +1,5 @@
+all:
+  metas:
+    title:        Nuevas Formas Muebles :: Diseño de muebles a medida
+
+  javascripts: [ampliar.js]

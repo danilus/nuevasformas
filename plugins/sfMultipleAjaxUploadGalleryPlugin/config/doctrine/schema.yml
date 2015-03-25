@@ -1,0 +1,50 @@
+#Gallery:
+#  actAs:
+#    Timestampable: ~
+#    Sluggable:
+#      fields: [title]
+#      unique: true
+#  columns:
+#    title:
+#      type : string(255)
+#    description:
+#      type : string(255)
+
+Gallery:
+  actAs:
+    Sluggable: { unique: true, fields: [title] }    
+    Sortable:
+      uniqueBy: [category_id]
+  columns:
+    category_id: { type: integer, notnull: true }
+    title:       { type: string(255), notnull: true, unique: true }
+    cover_img:   { type: string(255) }
+    description: { type: string(4000), notnull: true }
+    price:       { type: integer, notnull: true }
+    publish:     { type: boolean, notnull: true, default: false }
+    promote:     { type: boolean, notnull: true, default: false }
+  relations:
+    Category:
+      local: category_id
+      foreign: id
+      foreignAlias: Models
+      onDelete: RESTRICT
+    
+Photos:
+  actAs:
+    Timestampable: ~
+    Sluggable:
+      fields: [title]
+      unique: true
+  columns:
+    title:
+      type : string(255)
+    picpath:
+      type : string(255)
+    gallery_id:
+      type : integer(8)
+    is_default:     { type: boolean, default: false }
+  relations:
+    Gallery:
+      local: gallery_id
+      onDelete: CASCADE

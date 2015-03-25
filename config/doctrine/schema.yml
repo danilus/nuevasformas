@@ -1,0 +1,42 @@
+Category:
+  actAs:
+    Sluggable: { unique: true, fields: [name], canUpdate: true }
+    Sortable: ~
+  columns:
+    name:        { type: string(100), notnull: true, unique: true }
+    description: { type: string(4000) }
+    cover_img:   { type: string(255) }
+    publish:     { type: boolean, notnull: true, default: false }
+    
+Model:
+  actAs:
+    Sluggable: { unique: true, fields: [name], canUpdate: true }    
+    Sortable:
+      uniqueBy: [category_id]
+  columns:
+    category_id: { type: integer, notnull: true }
+    name:        { type: string(100), notnull: true, unique: true }
+    cover_img:   { type: string(255) }
+    description: { type: string(4000), notnull: true }
+    price:       { type: integer, notnull: true }
+    publish:     { type: boolean, notnull: true, default: false }
+    promote:     { type: boolean, notnull: true, default: false }
+  relations:
+    Category:
+      local: category_id
+      foreign: id
+      foreignAlias: Models
+      onDelete: RESTRICT
+
+ModelImage:
+  columns:
+    model_id: { type: integer, notnull: true }
+    filename: { type: string(255) }
+  relations:
+    Model:
+      alias: Model
+      foreign: id
+      foreignAlias: Images
+      foreignType: many
+      local: model_id
+      onDelete: CASCADE

@@ -1,0 +1,1 @@
+<?=image_tag('/uploads/models/'.$gallery->cover_img, array('height' => '200px'))?>

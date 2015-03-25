@@ -1,0 +1,1 @@
+<?=image_tag('/uploads/categories/'.$category->cover_img)?>

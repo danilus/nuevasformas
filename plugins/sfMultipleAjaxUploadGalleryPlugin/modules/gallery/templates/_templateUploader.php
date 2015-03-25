@@ -1,0 +1,1 @@
+<div class="qq-uploader"><div class="qq-upload-drop-area"><span>Suelta archivos aqui para cargar</span></div><div class="qq-upload-button"><span id="status" ></span><?php echo __('Añadir imágenes') ?></div><ul class="qq-upload-list"></ul></div>

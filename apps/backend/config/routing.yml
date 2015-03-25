@@ -1,0 +1,51 @@
+model_image:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ModelImage
+    module:               imagenes
+    prefix_path:          /imagenes
+    column:               id
+    with_wildcard_routes: true
+
+model:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Model
+    module:               model
+    prefix_path:          /model
+    column:               id
+    with_wildcard_routes: true
+
+category:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Category
+    module:               category
+    prefix_path:          /category
+    column:               id
+    with_wildcard_routes: true
+
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
+
+homepage:
+  url:   /
+  param: { module: sfAdminDash, action: dashboard }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

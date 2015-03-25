@@ -1,0 +1,39 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Category
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          category
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    css:                   false
+
+    config:
+      actions: ~
+      fields:
+        name:        { label: Nombre }
+        cover_img:   { label: Carátula }
+        description: { label: Descipción }
+        position:    { label: Orden }
+        publish:     { label: Publicar }
+      list:
+        display: [ name, _caratula, position, description, publish ]
+        object_actions:
+          _edit: ~
+          _delete: ~
+          promote:
+            action: promote
+          demote:
+            action: demote
+        title: Listado de Categorías
+        sort: [ position, asc ]
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editando Categoría: %%name%%
+      new:
+        title: Alta de Categoría

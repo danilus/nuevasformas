@@ -1,0 +1,49 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           gallery
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          gallery
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    css:                   false
+
+    config:
+      actions: ~
+      fields:
+        category_id: { label: Categoría }
+        Category:    { label: Categoría }
+        title:       { label: Nombre }
+        cover_img:   { label: Carátula }
+        description: { label: Descripción }
+        price:       { label: Precio }
+        position:    { label: Orden }
+        publish:     { label: Publicar }
+        promote:     { label: Promocionar }
+      list:
+        display: [ title, _caratula, description, Category, price, position, publish, promote ]
+        object_actions:
+          _edit: ~
+          _delete: ~
+#          adminImagenes: { label: Imágenes }
+          promote:
+            action: promote
+          demote:
+            action: demote
+        title: Listado de Modelos
+        sort: [ category_id, asc ]
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editando Modelo: %%title%%
+        display:
+          "Galerie": [ id, category_id, title, cover_img, description, position, price, publish, promote ]
+          "Photos": [_photoUpload]
+      new:
+        title: Alta de Modelo
+        display:
+          "Galerie": [ id, category_id, title, cover_img, description, position, price, publish, promote ]

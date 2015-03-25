@@ -1,0 +1,2 @@
+all:
+  stylesheets: [/csDoctrineActAsSortablePlugin/css/sortable.css]

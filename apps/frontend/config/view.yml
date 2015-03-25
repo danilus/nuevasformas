@@ -1,0 +1,19 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    title:        Nuevas Formas Muebles
+    description:  Diseño y fabricación de muebles a medida
+    keywords:     nuevas, formas, diseño, diseno, fabricación, fabricacion, fabricante, fabricantes, fabrica, mueble, muebles, medida, madera, natural, melamina, laqueado, laqueados, personalizado, masisa, placacentro, sacheco, ducasse, easy
+    language:     es
+    #robots:       index, follow
+
+  stylesheets:    [main.css, colorbox.css]
+  javascripts:    [/sfJqueryReloadedPlugin/js/jquery-1.4.2.min.js, jquery.colorbox-min.js]
+
+  has_layout:     true
+  layout:         layout

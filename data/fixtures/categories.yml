@@ -1,0 +1,72 @@
+Category:
+  escritorios:
+    name:        Escritorios
+    description:
+    cover_img:   TiraEscritorios.jpg
+    publish:     true
+
+  bauleras:
+    name:        Bauleras
+    description:
+    cover_img:   TiraBauleras.jpg
+    publish:     true
+
+  bibliotecas:
+    name:        Bibliotecas
+    description:
+    cover_img:   TiraBibliotecas.jpg
+    publish:     true
+
+  cajoneras:
+    name:        Cajoneras
+    description:
+    cover_img:   TiraCajoneras.jpg
+    publish:     true
+
+  camas:
+    name:        Camas
+    description:
+    cover_img:   TiraCamas.jpg
+    publish:     true
+
+  divisores:
+    name:        Divisores
+    description:
+    cover_img:   TiraDivisores.jpg
+    publish:     true
+
+  mesas:
+    name:        Mesas
+    description:
+    cover_img:   TiraMesas.jpg
+    publish:     true
+
+  modulos:
+    name:        Modulos
+    description:
+    cover_img:   TiraModulos.jpg
+    publish:     true
+
+  paneles:
+    name:        Paneles
+    description:
+    cover_img:   TiraPaneles.jpg
+    publish:     true
+
+  placards:
+    name:        Placards
+    description:
+    cover_img:   TiraPlacards.jpg
+    publish:     true
+
+  plasma:
+    name:        Plasma
+    description:
+    cover_img:   TiraPlasma.jpg
+    publish:     true
+
+  vitrinas:
+    name:        Vitrinas
+    description:
+    cover_img:   TiraVitrinas.jpg
+    publish:     true

@@ -1,0 +1,27 @@
+sfGuardUser:
+  Seba:
+    first_name:     Sebastian
+    last_name:      Toledo
+    email_address:  nuevasformas.muebles@gmail.com
+    username:       admin
+    password:       estier
+    is_super_admin: true
+    Groups:         [Group_admin]
+
+sfGuardGroup:
+  Group_admin:
+    name:           admin
+    description:    Grupo de Administradores
+    Permissions:    [Permission_admin]
+  Group_editor:
+    name:           editor
+    description:    Grupo de Editores
+    Permissions:    [Permission_editor]
+
+sfGuardPermission:
+  Permission_admin:
+    name:           admin
+    description:    Permisos de Administrador
+  Permission_editor:
+    name:           editor
+    description:    Permisos de Editor
