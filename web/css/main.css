@@ -70,20 +70,35 @@ body {
 /*  width: 600px; */
 }
 
+#central-display .clarification {
+  font-size: 18px;
+  height: 394px;
+  line-height: 394px;
+  text-align: center;
+  width: 600px}
+
 #sec-home #central-display,
 #sec-muebles #central-display {}
 
 #bottom-display {
   float: left;
+  margin: 24px 0 0 0;
 /*  width: 600px; */
 }
+
+#bottom-display .clarification {
+  font-size: 18px;
+  height: 135px;
+  line-height: 135px;
+  text-align: center;
+  width: 900px}
 
 
 /*** MENU ***/
 
 #general-menu {
   float: left;
-  margin: 70px 0 0 0;
+  margin: 58px 0 0 0;
   width: 180px}
 
 #general-menu .item {height: 32px}

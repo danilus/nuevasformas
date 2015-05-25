@@ -1,1 +1,1 @@
-<?=image_tag('/uploads/categories/'.$category->cover_img)?>
+<?php echo image_tag('/uploads/categories/'.$category->getCover_img(), array('width' => '60px')); ?>

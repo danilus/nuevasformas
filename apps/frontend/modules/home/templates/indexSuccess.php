@@ -1,21 +1,15 @@
-<? include_partial('global/menu') ?>
+<?php include_partial('global/menu'); ?>
 
 <div id="central-display">
 
-  <div class="home-module en-construccion">
-    <h2 class="title">Madera Natural</h2>
-    <span class="aclaracion">(en construcción)</span>
-    <?=image_tag('home-madera-natural.jpg')?>
-  </div>
-
+<?php foreach($sections as $section): ?>
   <div class="home-module">
-    <h2 class="title">Melamina</h2>
-    <?=link_to(image_tag('home-melamina.jpg'), '@muebles')?>
+  <!-- <div class="home-module en-construccion"> -->
+    <h2 class="title"><?php echo $section->getTitle(); ?></h2>
+    <!-- <span class="aclaracion">(en construcción)</span> -->
+    <?php echo link_to(image_tag('/uploads/sections/'.$section->getCover_img()), '@muebles?section='.$section->getUrl_name()); ?>
+    <?php // echo image_tag('/uploads/sections/'.$section->getCover_img()); ?>
   </div>
+<?php endforeach; ?>
 
-  <div class="home-module en-construccion">
-    <h2 class="title">Laqueados</h2>
-    <span class="aclaracion">(en construcción)</span>
-    <?=image_tag('home-laqueados.jpg')?>
-  </div>
 </div>

@@ -16,6 +16,8 @@ all:
     categories:
       Módulos:
         items:
+          Secciones:
+            url: section
           Categorías:
             url: category
           Modelos:

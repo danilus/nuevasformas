@@ -4,23 +4,23 @@ homepage:
 
 
 muebles:
-  url:   /muebles
+  url:   /muebles/:section
   param: { module: muebles, action: index }
 
 category:
-  url:   /muebles/:slug
+  url:   /muebles/:section/:slug
   class: sfDoctrineRoute
   options: { model: Category, type: object }
   params: { module: muebles, action: category }
 
 model:
-  url:   /muebles/detalle/:slug
+  url:   /muebles/:section/detalle/:slug
   class: sfDoctrineRoute
   options: { model: Model, type: object }
   params: { module: muebles, action: model }
 
 model_details:
-  url:   /muebles/ampliar-detalle/:slug
+  url:   /muebles/:section/ampliar-detalle/:slug
 #  class: sfDoctrineRoute
 #  options: { model: Model, type: object }
   param: { module: muebles, action: details }

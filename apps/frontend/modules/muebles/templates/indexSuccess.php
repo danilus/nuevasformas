@@ -1,62 +1,93 @@
-<? include_partial('global/menu') ?>
+<?php include_partial('global/menu', array('act_section' => $section->getTitle())); ?>
 
-<div id="central-display">
-  <div id="models">
-    <div class="anchor-titles">
-      <h2 class="category"><?=$selected_category->getName()?></h2>
+<?php if(count($categories) == 0): ?>
+
+  <div id="central-display">
+    <div class="clarification">
     </div>
-    <div class="h-carousel" alt="3">
-      <div class="control-container">
-        <a class="control ant" href="javascript:void(0);" alt="1">ANT</a>
-      </div>
-      <div class="mascara" alt="188">
-        <div class="contenedor" alt="3">
-          <? foreach($selected_category->getSortedModels() as $model): ?>
-            <div class="item">
-              <a href="<?=url_for('@model_details?slug='.$model->getSlug())?>" class="ampliar<? if($model->id == $selected_model->id) echo " foreign-link" ?>" rel="galeria-<?=$model->id?>">
-                <?=image_tag('/uploads/models/'.$model->getCoverImg(), array('class'=>'image'))?>
-              </a>
+  </div>
 
-              <? foreach($model->Photos as $k => $image): ?>
-                <? if($k != 0): ?>
-                  <a href="<?=url_for('@model_details?slug='.$model->getSlug().'&image_id='.$image->id)?>" class="ampliar" rel="galeria-<?=$model->id?>"></a>
-                <? endif ?>
-              <? endforeach ?>
-            </div>
-          <? endforeach ?>
-        </div>
+  <div id="bottom-display">
+    <div class="clarification">
+      Aún no hay categorías ni modelos en <?php echo $section->getTitle(); ?>
+    </div>
+  </div>
+
+<?php elseif(!$selected_category->getModels()): ?>
+
+  <div id="central-display">
+    <div class="clarification">
+      Aún no hay modelos en <?php echo $selected_category->getName(); ?>
+    </div>
+  </div>
+
+  <div id="bottom-display">
+    <div class="clarification">
+    </div>
+  </div>
+
+<?php else: ?>
+
+  <div id="central-display">
+    <div id="models">
+      <div class="anchor-titles">
+        <h2 class="category"><?php echo $selected_category->getName(); ?></h2>
       </div>
-      <div class="control-container">
-        <a class="control sig" href="javascript:void(0);" alt="<?=count($selected_category->getModels())?>">SIG</a>
+      <div class="h-carousel" alt="3">
+        <div class="control-container">
+          <a class="control ant" href="javascript:void(0);" alt="1">ANT</a>
+        </div>
+        <div class="mascara" alt="188">
+          <div class="contenedor" alt="3">
+            <? foreach($selected_category->getSortedModels() as $model): ?>
+              <div class="item">
+                <a href="<?=url_for('@model_details?section='.$section->getUrl_name().'&slug='.$model->getSlug())?>" class="ampliar<? if($model->id == $selected_model->id) echo " foreign-link" ?>" rel="galeria-<?=$model->id?>">
+                  <?=image_tag('/uploads/models/'.$model->getCoverImg(), array('class'=>'image'))?>
+                </a>
+
+                <? foreach($model->Photos as $k => $image): ?>
+                  <? if($k != 0): ?>
+                    <a href="<?=url_for('@model_details?section='.$section->getUrl_name().'&slug='.$model->getSlug().'&image_id='.$image->id)?>" class="ampliar" rel="galeria-<?=$model->id?>"></a>
+                  <? endif ?>
+                <? endforeach ?>
+              </div>
+            <? endforeach ?>
+          </div>
+        </div>
+        <div class="control-container">
+          <a class="control sig" href="javascript:void(0);" alt="<?=count($selected_category->getModels())?>">SIG</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div id="bottom-display">
-  <div id="categories">
-    <div class="h-carousel" alt="7">
-      <div class="control-container">
-        <a class="control ant" href="javascript:void(0);" alt="1"></a>
-      </div>
-      <div class="mascara" alt="118">
-        <div class="contenedor" alt="7">
-          <? foreach($categories as $cat): ?>
-            <div class="item">
-              <h3 class="name"><?=$cat->getName()?></h3>
-              <a href="<?=url_for('@category?slug='.$cat->getSlug())?>" class="<?=($cat->id==$selected_category->id)?'active':''?>">
-                <?=image_tag('/uploads/categories/'.$cat->cover_img, array('class'=>'image'))?>
-              </a>
-            </div>
-          <? endforeach; ?>
+
+  <div id="bottom-display">
+    <div id="categories">
+      <div class="h-carousel" alt="7">
+        <div class="control-container">
+          <a class="control ant" href="javascript:void(0);" alt="1"></a>
         </div>
-      </div>
-      <div class="control-container">
-        <a class="control sig" href="javascript:void(0);" alt="<?=count($categories)?>"></a>
+        <div class="mascara" alt="118">
+          <div class="contenedor" alt="7">
+            <? foreach($categories as $cat): ?>
+              <div class="item">
+                <h3 class="name"><?=$cat->getName()?></h3>
+                <a href="<?=url_for('@category?section='.$section->getUrl_name().'&slug='.$cat->getSlug())?>" class="<?=($cat->id==$selected_category->id)?'active':''?>">
+                  <?=image_tag('/uploads/categories/'.$cat->cover_img, array('class'=>'image'))?>
+                </a>
+              </div>
+            <? endforeach; ?>
+          </div>
+        </div>
+        <div class="control-container">
+          <a class="control sig" href="javascript:void(0);" alt="<?php echo count($categories); ?>"></a>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+<?php endif; ?>
 
 
 <script type="text/javascript">

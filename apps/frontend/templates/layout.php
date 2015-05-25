@@ -19,7 +19,7 @@
       })();
     </script>
   </head>
-  <body id="sec-<?=$sf_context->getInstance()->getModuleName()?>">
+  <body id="sec-<?php echo $sf_context->getInstance()->getModuleName(); ?>">
   
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
@@ -32,11 +32,11 @@
 
     <div id="oc">
       <div id="ic">
-        <? include_partial('global/header') ?>
+        <?php include_partial('global/header'); ?>
         <div id="content">
-          <?=$sf_content?>
+          <?php echo $sf_content; ?>
         </div>
-        <? include_partial('global/footer') ?>
+        <?php include_partial('global/footer'); ?>
       </div>
     </div>
   </body>

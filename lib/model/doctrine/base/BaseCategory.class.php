@@ -9,17 +9,23 @@
  * @property string $description
  * @property string $cover_img
  * @property boolean $publish
+ * @property integer $section_id
+ * @property Section $Section
  * @property Doctrine_Collection $Models
  * 
  * @method string              getName()        Returns the current record's "name" value
  * @method string              getDescription() Returns the current record's "description" value
  * @method string              getCoverImg()    Returns the current record's "cover_img" value
  * @method boolean             getPublish()     Returns the current record's "publish" value
+ * @method integer             getSectionId()   Returns the current record's "section_id" value
+ * @method Section             getSection()     Returns the current record's "Section" value
  * @method Doctrine_Collection getModels()      Returns the current record's "Models" collection
  * @method Category            setName()        Sets the current record's "name" value
  * @method Category            setDescription() Sets the current record's "description" value
  * @method Category            setCoverImg()    Sets the current record's "cover_img" value
  * @method Category            setPublish()     Sets the current record's "publish" value
+ * @method Category            setSectionId()   Sets the current record's "section_id" value
+ * @method Category            setSection()     Sets the current record's "Section" value
  * @method Category            setModels()      Sets the current record's "Models" collection
  * 
  * @package    NuevasFormas
@@ -51,11 +57,19 @@ abstract class BaseCategory extends sfDoctrineRecord
              'notnull' => true,
              'default' => false,
              ));
+        $this->hasColumn('section_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Section', array(
+             'local' => 'section_id',
+             'foreign' => 'id',
+             'onDelete' => 'RESTRICT'));
+
         $this->hasMany('Gallery as Models', array(
              'local' => 'id',
              'foreign' => 'category_id'));

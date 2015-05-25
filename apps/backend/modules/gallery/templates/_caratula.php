@@ -1,1 +1,1 @@
-<?=image_tag('/uploads/models/'.$gallery->cover_img, array('height' => '200px'))?>
+<?php echo image_tag('/uploads/models/'.$gallery->cover_img, array('height' => '120px')); ?>

@@ -17,6 +17,7 @@ abstract class BaseCategoryFormFilter extends BaseFormFilterDoctrine
       'description' => new sfWidgetFormFilterInput(),
       'cover_img'   => new sfWidgetFormFilterInput(),
       'publish'     => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'section_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Section'), 'add_empty' => true)),
       'slug'        => new sfWidgetFormFilterInput(),
       'position'    => new sfWidgetFormFilterInput(),
     ));
@@ -26,6 +27,7 @@ abstract class BaseCategoryFormFilter extends BaseFormFilterDoctrine
       'description' => new sfValidatorPass(array('required' => false)),
       'cover_img'   => new sfValidatorPass(array('required' => false)),
       'publish'     => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'section_id'  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Section'), 'column' => 'id')),
       'slug'        => new sfValidatorPass(array('required' => false)),
       'position'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
@@ -52,6 +54,7 @@ abstract class BaseCategoryFormFilter extends BaseFormFilterDoctrine
       'description' => 'Text',
       'cover_img'   => 'Text',
       'publish'     => 'Boolean',
+      'section_id'  => 'ForeignKey',
       'slug'        => 'Text',
       'position'    => 'Number',
     );

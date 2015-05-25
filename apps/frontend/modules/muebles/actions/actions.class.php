@@ -12,17 +12,29 @@ class mueblesActions extends sfActions
 {
   public function preExecute() {
 //    $this->categories = Doctrine::getTable('Category')->findByDql('publish= ?', true);
+    if(!$this->getRequestParameter('section')):
+      $this->redirect('@homepage');
+    endif;
+    $this->section = Doctrine::getTable('Section')->findOneBy('url_name', $this->getRequestParameter('section'));
+    if(!$this->section):
+      $this->forward404();
+    elseif(!$this->section->getPublish()):
+      die('P&aacute;gina en construcci&oacute;n');
+    endif;
     $this->categories = Doctrine_Query::create()
       ->from('Category c')
-      ->where('c.publish = ?', true)
+      ->where('c.section_id = ?', $this->section->getId())
+      ->andWhere('c.publish = ?', true)
       ->orderBy('c.position asc')
       ->execute();
   }
   
   
   public function executeIndex(sfWebRequest $request) {
-    $this->selected_category = $this->categories[0];
-    $this->selected_model = $this->selected_category->Models[0];
+    if(count($this->categories) > 0):
+      $this->selected_category = $this->categories[0];
+      $this->selected_model = $this->selected_category->Models[0];
+    endif;
   }
   
   

@@ -15,13 +15,14 @@ generator:
     config:
       actions: ~
       fields:
+        section:     { label: Sección }
         name:        { label: Nombre }
         cover_img:   { label: Carátula }
         description: { label: Descipción }
         position:    { label: Orden }
         publish:     { label: Publicar }
       list:
-        display: [ name, _caratula, position, description, publish ]
+        display: [ section, name, _caratula, position, description, publish ]
         object_actions:
           _edit: ~
           _delete: ~

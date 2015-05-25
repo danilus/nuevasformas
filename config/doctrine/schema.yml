@@ -1,3 +1,13 @@
+Section:
+  actAs:
+    Sortable: ~
+  columns:
+    title:     { type: string(100), notnull: true, unique: true }
+    url_name:  { type: string(100), notnull: true, unique: true }
+    cover_img: { type: string(255) }
+    publish:   { type: boolean, notnull: true, default: false }
+
+
 Category:
   actAs:
     Sluggable: { unique: true, fields: [name], canUpdate: true }
@@ -7,10 +17,18 @@ Category:
     description: { type: string(4000) }
     cover_img:   { type: string(255) }
     publish:     { type: boolean, notnull: true, default: false }
-    
+    section_id:  { type: integer }
+  relations:
+    Section:
+      local: section_id
+      foreign: id
+      foreignAlias: Categories
+      onDelete: RESTRICT
+
+
 Model:
   actAs:
-    Sluggable: { unique: true, fields: [name], canUpdate: true }    
+    Sluggable: { unique: true, fields: [name], canUpdate: true }
     Sortable:
       uniqueBy: [category_id]
   columns:

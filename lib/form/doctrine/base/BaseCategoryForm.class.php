@@ -20,6 +20,7 @@ abstract class BaseCategoryForm extends BaseFormDoctrine
       'description' => new sfWidgetFormTextarea(),
       'cover_img'   => new sfWidgetFormInputText(),
       'publish'     => new sfWidgetFormInputCheckbox(),
+      'section_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Section'), 'add_empty' => true)),
       'slug'        => new sfWidgetFormInputText(),
       'position'    => new sfWidgetFormInputText(),
     ));
@@ -30,6 +31,7 @@ abstract class BaseCategoryForm extends BaseFormDoctrine
       'description' => new sfValidatorString(array('max_length' => 4000, 'required' => false)),
       'cover_img'   => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'publish'     => new sfValidatorBoolean(array('required' => false)),
+      'section_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Section'), 'required' => false)),
       'slug'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'position'    => new sfValidatorInteger(array('required' => false)),
     ));

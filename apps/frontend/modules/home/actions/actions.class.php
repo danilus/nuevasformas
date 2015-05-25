@@ -11,5 +11,10 @@
 class homeActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request) {
+    $this->sections = Doctrine_Query::create()
+      ->from('Section s')
+      ->where('s.publish = ?', true)
+      ->orderBy('s.position asc')
+      ->execute();
   }
 }
