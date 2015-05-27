@@ -11,6 +11,8 @@
 class homeActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request) {
+		$this->redirect('@muebles?section=melamina');
+
     $this->sections = Doctrine_Query::create()
       ->from('Section s')
       ->where('s.publish = ?', true)
